@@ -40,6 +40,13 @@
   // Check out the dog.ceo API here: https://dog.ceo/dog-api/
   //
   // 1) Add a click event to the "Generate Doggo" button
+
+  $('#generateDoggoBtn').click(clickDog)
+  function clickDog () {
+    $('#doggoContainer').load('https://dog.ceo/api/breeds/image/random')
+    $("#generateDoggoBtn").html('Generating Doggo ....')
+    $('#generateDoggoBtn').attr("disabled", true)
+  }
   //
   // 2) In your event handler, make an AJAX request to https://dog.ceo/api/breeds/image/random
   //    which will return JSON data.
@@ -51,6 +58,8 @@
   // 4) When the button is clicked, change the button text to "Generating Doggo …"
   //    and add the "disabled" attribute to the button so it is no longer clickable.
   //    Hint: jQuery has methods for changing DOM attributes: http://api.jquery.com/attr/
+
+  
   //
   // 5) The callback function for your AJAX request takes three parameters (function arguments).
   //    The first argument is the data returned from the request. Note that jQuery took the raw
