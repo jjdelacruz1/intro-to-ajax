@@ -41,11 +41,22 @@
   //
   // 1) Add a click event to the "Generate Doggo" button
 
+  function handleResponse(response) {
+    console.log(response);
+    $('#doggoContainer').html(`<img src="${response.message}">`)
+  }
+
   $('#generateDoggoBtn').click(clickDog)
   function clickDog () {
-    $('#doggoContainer').load('https://dog.ceo/api/breeds/image/random')
+    // console.log('You clicked the button')
+    // $('#doggoContainer').get('https://dog.ceo/api/breeds/image/random')
+
+    const promise = $.get('https://dog.ceo/api/breeds/image/random')
+    promise.then(handleResponse);
     $("#generateDoggoBtn").html('Generating Doggo ....')
-    $('#generateDoggoBtn').attr("disabled", true)
+
+    // $('#generateDoggoBtn').attr("disabled", true)
+    
   }
   //
   // 2) In your event handler, make an AJAX request to https://dog.ceo/api/breeds/image/random
