@@ -48,15 +48,11 @@
 
   $('#generateDoggoBtn').click(clickDog)
   function clickDog () {
-    // console.log('You clicked the button')
-    // $('#doggoContainer').get('https://dog.ceo/api/breeds/image/random')
-
     const promise = $.get('https://dog.ceo/api/breeds/image/random')
     promise.then(handleResponse);
     $("#generateDoggoBtn").html('Generating Doggo ....')
-
-    // $('#generateDoggoBtn').attr("disabled", true)
-    
+    $('#generateDoggoBtn').attr("disabled", true)
+    originalButton()
   }
   //
   // 2) In your event handler, make an AJAX request to https://dog.ceo/api/breeds/image/random
@@ -70,7 +66,10 @@
   //    and add the "disabled" attribute to the button so it is no longer clickable.
   //    Hint: jQuery has methods for changing DOM attributes: http://api.jquery.com/attr/
 
-  
+  function originalButton(){
+    $('#generateDoggoBtn').html('Generate Doggo')
+    $('#generateDoggoBtn').attr("disabled", false)
+  }
   //
   // 5) The callback function for your AJAX request takes three parameters (function arguments).
   //    The first argument is the data returned from the request. Note that jQuery took the raw
