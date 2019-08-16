@@ -129,9 +129,10 @@
 
 function renderBreeds(breeds) {
   // console.log(breeds.message)
+  $('#selectBreedContainer').html(`<select id='breedList'></select>`)
   for(var i = 0; i < breeds.message.length; i++){
     console.log(breeds.message[i])
-  $('#selectBreedContainer').html(`<select><option value="${breeds.message}">${breeds.message}</option> </select>`)
+  $('#breedList').append(`<option value="${breeds.message[i]}">${breeds.message[i]}</option>`)
 }
 }
 
@@ -142,6 +143,8 @@ $(document).ready(function(){
 
   // $('#selectBreedContainer').html('<select>' + '</select>')
 })
+
+//for the next part for selecting use choose....
   // Excellent work!
   //
   // Hopefully you can see why web developers prefer using the jQuery API over XMLHttpRequest directly.
