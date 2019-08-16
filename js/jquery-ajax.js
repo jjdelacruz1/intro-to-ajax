@@ -42,17 +42,16 @@
   // 1) Add a click event to the "Generate Doggo" button
 
   function handleResponse(response) {
-    console.log(response);
-    $('#doggoContainer').html(`<img src="${response.message}">`)
+    $('#doggoContainer').html(`<img id="dog" src="${response.message}">`)
+    $('#dog').one('load', originalButton) //look .one and see what it does
   }
 
   $('#generateDoggoBtn').click(clickDog)
   function clickDog () {
-    const promise = $.get('https://dog.ceo/api/breeds/image/random')
-    promise.then(handleResponse);
     $("#generateDoggoBtn").html('Generating Doggo ....')
     $('#generateDoggoBtn').attr("disabled", true)
-    originalButton()
+    const promise = $.get('https://dog.ceo/api/breeds/image/random')
+    promise.then(handleResponse);
   }
   //
   // 2) In your event handler, make an AJAX request to https://dog.ceo/api/breeds/image/random
@@ -126,8 +125,23 @@
   //
 
   // TODO: your code goes here :)
-
   //
+
+function renderBreeds(breeds) {
+  // console.log(breeds.message)
+  for(var i = 0; i < breeds.message.length; i++){
+    console.log(breeds.message[i])
+  $('#selectBreedContainer').html(`<select><option value="${breeds.message}">${breeds.message}</option> </select>`)
+}
+}
+
+$(document).ready(function(){
+  const breedPromise = $.get('https://dog.ceo/api/breeds/list')
+  // console.log(breedPromise.responseJSON)
+  breedPromise.then(renderBreeds)
+
+  // $('#selectBreedContainer').html('<select>' + '</select>')
+})
   // Excellent work!
   //
   // Hopefully you can see why web developers prefer using the jQuery API over XMLHttpRequest directly.
