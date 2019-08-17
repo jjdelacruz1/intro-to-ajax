@@ -133,15 +133,14 @@ function renderBreeds(breeds) {
   for(var i = 0; i < breeds.message.length; i++){
     console.log(breeds.message[i])
   $('#breedList').append(`<option value="${breeds.message[i]}">${breeds.message[i]}</option>`)
+
+
 }
 }
 
 $(document).ready(function(){
   const breedPromise = $.get('https://dog.ceo/api/breeds/list')
-  // console.log(breedPromise.responseJSON)
   breedPromise.then(renderBreeds)
-
-  // $('#selectBreedContainer').html('<select>' + '</select>')
 })
 
 //for the next part for selecting use choose....
@@ -152,3 +151,37 @@ $(document).ready(function(){
   // Next let's look at a new contender that is built into modern browsers: the Fetch API
   //
 })()
+
+
+
+// $('#selectBreedContainer').html('<select id="breed-selector"><div id="result-dog"></div></select>')
+// THIS IS ANOTHER WAY OF GETTING THE LIST COMPARED TO WHAT YOU ALREADY HAVE
+// $.getJSON({
+//   url: 'https://dog.ceo/api/breeds/list',
+//   success: function (response) {
+//     const allBreedsHTMLList = response.message.map(function(breed) {
+//       const singleBreedHTML = `<option>${breed}</option>`
+//       return singleBreedHTML
+//     })
+//     const allBreedsHTML = allBreedsHTMLList.join('')
+
+//     $('#breed-selector').html(allBreedsHTML)
+
+  // $('#breed-selector').on('change', function() {
+  //   console.log('something changed', $('#breed-selector').val())
+
+  //   const selectedBreed = $('#breed-selector'.val()
+
+  //   const breedURL = `https://dog.ceo/api/breed/${selectedBreed}/images/random`
+
+  //   $.getJSON({
+  //     url: breedURL,
+  //     success: function (response) {
+  //       const dogImageURL = response.message
+  //       $('#result-dog').html(`<img src="${dogImageURL}"/>`)
+  //     }
+  //   })
+  // })
+//   }
+// })
+
